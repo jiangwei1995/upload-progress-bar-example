@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/bootstrap-progressbar/bootstrap-progressbar.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/jquery-form/jquery.form.js"></script>
+  </head>
+  <body>
+    <script >
+      $(function() {
+          var bar = $('.bar');
+          var percent = $('.percent');
+          var status = $('#status');
+          $('#myForm').ajaxForm({
+              beforeSend: function() {
+                  status.empty();
+                  var percentVal = '0%';
+                  bar.width(percentVal);
+                  percent.html(percentVal);
+              },
+              uploadProgress: function(event, position, total, percentComplete) {
+                  var percentVal = percentComplete + '%';
+                  bar.width(percentVal);
+                  percent.html(percentVal);
+              },
+              complete: function(xhr) {
+                  status.html(xhr.responseText);
+              }
+          });
+        });
+    </script>
+    <form id="myForm" action="http://localhost:3000/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="myfile"><br>
+        <input type="submit" value="Upload File to Server">
+    </form>
+    
+    <div id="progressbar">
+      <div class="progress" style="width:100px;">
+        <div class="bar progress-bar-success" style="width: 0%;">
+          <div class="percent" style="color:#000000;">0%</div >
+        </div>
+      </div>
+    </div>
+
+    <div id="status"></div>
+  </body>
+</html>

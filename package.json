@@ -1,0 +1,29 @@
+{
+  "name": "upload-progress-bar-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-progressbar": "^0.9.0",
+    "connect-multiparty": "^2.0.0",
+    "express": "^4.14.0",
+    "jquery": "^3.1.1",
+    "jquery-form": "^3.50.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiangwei1995/upload-progress-bar-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jiangwei1995/upload-progress-bar-example/issues"
+  },
+  "homepage": "https://github.com/jiangwei1995/upload-progress-bar-example#readme"
+}
