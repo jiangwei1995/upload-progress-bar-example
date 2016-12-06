@@ -1,7 +1,6 @@
 
 let express = require('express');
 let app = express();
-let formidable = require('formidable');
 let multipart = require('connect-multiparty');
 let multipartMiddleware = multipart();
 let fs = require('fs');
@@ -11,7 +10,7 @@ app.use('*',function(req, res, next){
     next();
 })
 app.post('/upload',multipartMiddleware,function(req, res){
-  fs.rename(req.files.myfile.path, './imgs/' + req.files.myfile.originalFilename ,function(err){
+  fs.rename(req.files.myfile.path, req.files.myfile.originalFilename ,function(err){
     if (err) {
       res.json({'code':500});
     }
@@ -19,8 +18,6 @@ app.post('/upload',multipartMiddleware,function(req, res){
   })
 })
 
-
-
 app.listen(3000);
 
-console.log('listening on http://localhost:'+3000+'/');
+console.log('listening on http://localhost:3000/');
